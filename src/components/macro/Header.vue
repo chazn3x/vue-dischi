@@ -1,5 +1,5 @@
 <template>
-    <header class="py-2">
+    <header>
         <img src="../../assets/img/logo.png" alt="">
     </header>
 </template>
@@ -14,6 +14,7 @@ name: "Header"
 header {
     height: 60px;
     background: rgb(45,58,70);
+    padding: .75rem 0;
     img {
         height: 100%;
     }

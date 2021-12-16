@@ -1,13 +1,17 @@
 <template>
     <main>
-
+        <AlbumsList :albums="albums"/>
     </main>
 </template>
 
 <script>
 import axios from 'axios';
+import AlbumsList from '../sections/AlbumsList.vue'
 export default {
     name: "Main",
+    components: {
+        AlbumsList
+    },
     data() {
         return {
             albums: null,
