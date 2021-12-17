@@ -1,7 +1,6 @@
 <template>
     <main>
-        <AlbumsList v-if="albums.length == 10" :albums="albums"/>
-        <div v-else class="loader"></div>
+        <AlbumsList :albums="albums" :loader="response" :info="{genres: genres, artists: artists}"/>
     </main>
 </template>
 
@@ -16,30 +15,29 @@ export default {
     data() {
         return {
             albums: [],
+            genres: [],
+            artists:[],
+            response: false,
         }
     },
-    mounted() {
+    created() {
         axios.get('https://flynn.boolean.careers/exercises/api/array/music')
         .then((response) => {
             this.albums = response.data.response;
+            this.albums.forEach(album => {
+                if (!(this.genres.includes(album.genre))) {
+                    this.genres.push(album.genre);
+                }
+                if (!(this.artists.includes(album.author))) {
+                    this.artists.push(album.author);
+                }
+            });
+            this.response = true;
         });
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.loader {
-    width: 60px;
-    height: 60px;
-    margin: 150px auto;
-    border-radius: 50%;
-    border: 4px solid rgb(45,58,70);
-    border-top: 4px solid rgb(28,215,96);
-    // border: 4px solid rgb(28,215,96);
-    animation: spin 1s linear infinite;
-    @keyframes spin {
-        0% {transform: rotate(0deg);}
-        100% {transform: rotate(360deg);}
-    }
-}
+
 </style>
