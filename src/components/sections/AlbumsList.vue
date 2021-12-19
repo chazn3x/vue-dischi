@@ -2,7 +2,7 @@
     <section class="container">
         <Search :info="info" @search="searchAlbums"/>
         <div v-if="loader" class="list">
-            <AlbumCard v-for="(album, index) in filteredAlbums" :key="index" :info="album"/>
+            <AlbumCard v-for="(album, index) in filteredAlbums" :key="index" :info="album" :search="filter"/>
         </div>
         <div v-else class="loader"></div>
     </section>
