@@ -12,16 +12,16 @@
         </div>
         <!-- ricerca per genere -->
         <div class="genres">
-            <label for="genres">Select a genre: </label>
-            <select id="genres" v-model="genre" @change="$emit('search', genre), artist = '', searchText = '', del = false">
+            <span>Select a genre: </span>
+            <select v-model="genre" @change="$emit('search', genre), artist = '', searchText = '', del = false">
                 <option value="" selected>All</option>
                 <option v-for="(genre, index) in info.genres" :key="index" :value="genre">{{genre}}</option>
             </select>
         </div>
         <!-- ricerca per artista -->
         <div class="artists">
-            <label for="artists">Select an artist: </label>
-            <select id="artists" v-model="artist" @change="$emit('search', artist), genre = '', searchText = '', del = false">
+            <span>Select an artist: </span>
+            <select v-model="artist" @change="$emit('search', artist), genre = '', searchText = '', del = false">
                 <option value="" selected>All</option>
                 <option v-for="(artist, index) in info.artists" :key="index" :value="artist">{{artist}}</option>
             </select>
@@ -54,8 +54,9 @@ export default {
     align-items: center;
     justify-content: center;
     margin-top: 20px;
-    label {
+    span {
         color: white;
+        margin-right: 10px;
     }
     .search-bar, .genres, .artists {
         margin: 0 20px;
